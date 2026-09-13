@@ -38,7 +38,7 @@ const LEVELS = [
   {
     instruction: 'יש כאן יותר מדי כוכבי לכת לשורה אחת! גרמו לעודפים לעטוף לשורה נוספת, וסדרו את כולם צמודים לפינה השמאלית העליונה של הלוח.',
     itemCount: 8,
-    itemSize: 70,
+    itemSize: 55,
     target: { direction: 'row', justify: 'flex-start', align: 'flex-start', wrap: 'wrap' }
   },
   {
@@ -55,9 +55,8 @@ const LEVELS = [
   },
   {
     instruction: 'יש כאן יותר מדי כוכבי לכת לעמודה אחת! אפשרו להם לעטוף לעמודה נוספת, ומרכזו את כל הקבוצה בלוח.',
-    itemCount: 6,
-    itemSize: 90,
-    itemWidth: 65,
+    itemCount: 7,
+    itemSize: 55,
     target: { direction: 'column', justify: 'center', align: 'center', wrap: 'wrap' }
   }
 ];
