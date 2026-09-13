@@ -78,6 +78,32 @@ body {
   gap: 0.5rem;
 }
 
+.level-nav {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.btn-nav {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: var(--bg);
+}
+
+.btn-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .level-dot {
   width: 12px;
   height: 12px;
@@ -175,14 +201,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  font-size: 0.85em;
   font-family: 'Courier New', monospace;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
   flex: none;
   background:
-    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.55), transparent 55%),
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.5), transparent 45%),
+    radial-gradient(circle at 70% 65%, rgba(0,0,0,0.22), transparent 35%),
+    radial-gradient(circle at 40% 75%, rgba(0,0,0,0.18), transparent 30%),
+    radial-gradient(circle at 75% 30%, rgba(0,0,0,0.15), transparent 25%),
     var(--planet-color);
-  box-shadow: inset -6px -6px 12px rgba(0,0,0,0.35), 0 3px 8px rgba(0,0,0,0.35);
+  box-shadow:
+    inset -6px -6px 12px rgba(0,0,0,0.35),
+    0 0 14px 1px var(--planet-color),
+    0 3px 8px rgba(0,0,0,0.35);
   transition: transform 0.2s ease;
 }
 
@@ -312,6 +346,30 @@ body {
   text-align: center;
   font-size: 0.78rem;
   color: var(--muted);
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  width: 8px;
+  height: 14px;
+  z-index: 999;
+  opacity: 0.95;
+  pointer-events: none;
+  animation-name: confetti-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(540deg);
+    opacity: 0;
+  }
 }
 
 @media (max-width: 380px) {

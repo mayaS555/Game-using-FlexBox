@@ -84,6 +84,8 @@ const ctrlWrap = document.getElementById('ctrl-wrap');
 
 const btnCheck = document.getElementById('btn-check');
 const btnReset = document.getElementById('btn-reset');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
 function saveProgress() {
   try {
@@ -164,6 +166,9 @@ function updateProgressUI() {
   progressEl.textContent = 'שלב ' + (state.current + 1) + ' מתוך ' + LEVELS.length;
   scoreEl.textContent = 'ניקוד: ' + state.score;
   renderDots();
+
+  btnPrev.disabled = state.current === 0;
+  btnNext.disabled = !(state.completed.includes(state.current) && state.current < LEVELS.length - 1);
 }
 
 function clearFeedback() {
@@ -183,6 +188,35 @@ function loadLevel(index) {
   setControlsToDefault();
   clearFeedback();
   updateProgressUI();
+}
+
+function goToPrevLevel() {
+  if (state.current > 0) {
+    loadLevel(state.current - 1);
+  }
+}
+
+function goToNextManual() {
+  if (state.completed.includes(state.current) && state.current < LEVELS.length - 1) {
+    loadLevel(state.current + 1);
+  }
+}
+
+function launchConfetti() {
+  const colors = ['#ff6b6b', '#feca57', '#1dd1a1', '#54a0ff', '#ff9ff3', '#a29bfe'];
+  const pieceCount = 40;
+
+  for (let i = 0; i < pieceCount; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (1 + Math.random() * 0.8) + 's';
+    piece.style.animationDelay = (Math.random() * 0.3) + 's';
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 2200);
+  }
 }
 
 function goToNextLevel() {
@@ -210,6 +244,8 @@ function checkSolution() {
   if (isCorrect) {
     feedbackEl.textContent = 'מצוין! הפתרון נכון 🎉';
     feedbackEl.className = 'feedback success';
+
+    launchConfetti();
 
     const planets = boardEl.querySelectorAll('.planet');
     planets.forEach((p, i) => {
@@ -253,6 +289,8 @@ ctrlWrap.addEventListener('change', applyControlsToBoard);
 
 btnCheck.addEventListener('click', checkSolution);
 btnReset.addEventListener('click', resetLevel);
+btnPrev.addEventListener('click', goToPrevLevel);
+btnNext.addEventListener('click', goToNextManual);
 
 loadProgress();
 loadLevel(0);

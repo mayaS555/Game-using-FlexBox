@@ -19,6 +19,10 @@
       <p id="level-progress" class="level-progress">שלב 1 מתוך 8</p>
       <p id="score-display" class="score-display">ניקוד: 0</p>
       <div id="level-dots" class="level-dots"></div>
+      <div class="level-nav">
+        <button id="btn-prev" class="btn btn-nav">◀ שלב קודם</button>
+        <button id="btn-next" class="btn btn-nav">שלב הבא ▶</button>
+      </div>
     </div>
 
     <main class="game-area">
@@ -33,41 +37,41 @@
         <div id="board" class="board"></div>
       </div>
 
-      <section class="controls-panel" dir="ltr">
+      <section class="controls-panel">
         <div class="control-group">
-          <label for="ctrl-direction">flex-direction</label>
+          <label for="ctrl-direction">כיוון הפריסה</label>
           <select id="ctrl-direction">
-            <option value="row">row</option>
-            <option value="column">column</option>
+            <option value="row">שורה</option>
+            <option value="column">עמודה</option>
           </select>
         </div>
 
         <div class="control-group">
-          <label for="ctrl-justify">justify-content</label>
+          <label for="ctrl-justify">יישור על הציר הראשי</label>
           <select id="ctrl-justify">
-            <option value="flex-start">flex-start</option>
-            <option value="center">center</option>
-            <option value="flex-end">flex-end</option>
-            <option value="space-between">space-between</option>
-            <option value="space-around">space-around</option>
-            <option value="space-evenly">space-evenly</option>
+            <option value="flex-start">התחלה</option>
+            <option value="center">מרכז</option>
+            <option value="flex-end">סוף</option>
+            <option value="space-between">רווח בין</option>
+            <option value="space-around">רווח מסביב</option>
+            <option value="space-evenly">רווח שווה</option>
           </select>
         </div>
 
         <div class="control-group">
-          <label for="ctrl-align">align-items</label>
+          <label for="ctrl-align">יישור על הציר המשני</label>
           <select id="ctrl-align">
-            <option value="flex-start">flex-start</option>
-            <option value="center">center</option>
-            <option value="flex-end">flex-end</option>
+            <option value="flex-start">התחלה</option>
+            <option value="center">מרכז</option>
+            <option value="flex-end">סוף</option>
           </select>
         </div>
 
         <div class="control-group">
-          <label for="ctrl-wrap">flex-wrap</label>
+          <label for="ctrl-wrap">גלישה</label>
           <select id="ctrl-wrap">
-            <option value="nowrap">nowrap</option>
-            <option value="wrap">wrap</option>
+            <option value="nowrap">בלי גלישה</option>
+            <option value="wrap">עם גלישה</option>
           </select>
         </div>
       </section>
@@ -80,9 +84,6 @@
       <p id="feedback" class="feedback" aria-live="polite"></p>
 
     </main>
-
-    <footer class="app-footer">
-    </footer>
 
   </div>
 
