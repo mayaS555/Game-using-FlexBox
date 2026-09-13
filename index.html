@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מיון כוכבי הלכת - משחק ללימוד Flexbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="app-header">
+      <h1>🚀 מיון כוכבי הלכת</h1>
+      <p class="subtitle">משחק ללימוד Flexbox &mdash; סדרו את כוכבי הלכת בסיפון המטען לפי ההוראה</p>
+    </header>
+
+    <div class="progress-row">
+      <p id="level-progress" class="level-progress">שלב 1 מתוך 8</p>
+      <p id="score-display" class="score-display">ניקוד: 0</p>
+      <div id="level-dots" class="level-dots"></div>
+    </div>
+
+    <main class="game-area">
+
+      <section class="instruction-panel">
+        <h2>המשימה:</h2>
+        <p id="instruction">טוען...</p>
+        <p id="attempts" class="attempts">נסיונות בשלב זה: 0</p>
+      </section>
+
+      <div class="board-wrapper" dir="ltr">
+        <div id="board" class="board"></div>
+      </div>
+
+      <section class="controls-panel" dir="ltr">
+        <div class="control-group">
+          <label for="ctrl-direction">flex-direction</label>
+          <select id="ctrl-direction">
+            <option value="row">row</option>
+            <option value="column">column</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="ctrl-justify">justify-content</label>
+          <select id="ctrl-justify">
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="ctrl-align">align-items</label>
+          <select id="ctrl-align">
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="ctrl-wrap">flex-wrap</label>
+          <select id="ctrl-wrap">
+            <option value="nowrap">nowrap</option>
+            <option value="wrap">wrap</option>
+          </select>
+        </div>
+      </section>
+
+      <div class="actions-row">
+        <button id="btn-check" class="btn btn-primary">בדוק פתרון</button>
+        <button id="btn-reset" class="btn btn-secondary">איפוס שלב</button>
+      </div>
+
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+
+    </main>
+
+    <footer class="app-footer">
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
