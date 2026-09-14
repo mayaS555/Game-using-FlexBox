@@ -251,8 +251,8 @@ body {
 .controls-panel {
   width: 100%;
   max-width: 480px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
   justify-content: center;
   background: var(--surface);
@@ -263,24 +263,31 @@ body {
 
 .control-group {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 0.3rem;
   min-width: 130px;
+  padding-bottom: 3%;
+
 }
 
 .control-group label {
-  font-family: 'Courier New', monospace;
+  font-family: Arial, sans-serif;
   font-size: 0.72rem;
   color: var(--muted);
 }
 
 .control-group select {
-  font-size: 0.9rem;
-  padding: 0.4rem 0.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  color: var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  width: 150px;
+  padding: 0.3rem 0.5rem;
+  border:1px solid #1d1846;
+  border-radius: 12px;
+  color: #24243a;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
 }
 
 .actions-row {
