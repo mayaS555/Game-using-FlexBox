@@ -7,6 +7,7 @@ const DEFAULT_CONTROLS = {
   direction: 'row',
   justify: 'flex-start',
   align: 'flex-start',
+  alignContent: 'stretch',
   wrap: 'nowrap'
 };
 
@@ -15,49 +16,49 @@ const LEVELS = [
     instruction: 'סדרו את כוכבי הלכת בשורה אחת, כשהראשון צמוד לקצה השמאלי והאחרון לקצה הימני של הלוח, עם רווחים שווים ביניהם. מרכזו אותם לגובה הלוח.',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'row', justify: 'space-between', align: 'center', wrap: 'nowrap' }
+    target: { direction: 'row', justify: 'space-between', align: 'center', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'סדרו את כוכבי הלכת בעמודה אחת, צמודים לחלק העליון של הלוח, וממורכזים לרוחב הלוח.',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'column', justify: 'flex-start', align: 'center', wrap: 'nowrap' }
+    target: { direction: 'column', justify: 'flex-start', align: 'center', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'סדרו את כוכבי הלכת בשורה אחת, ממורכזים לרוחב הלוח, כשכולם צמודים לתחתית הלוח.',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'row', justify: 'center', align: 'flex-end', wrap: 'nowrap' }
+    target: { direction: 'row', justify: 'center', align: 'flex-end', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'סדרו את כוכבי הלכת בעמודה אחת הצמודה לצד הימני של הלוח, עם מרווח שווה סביב כל כוכב (כולל למעלה ולמטה).',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'column', justify: 'space-around', align: 'flex-end', wrap: 'nowrap' }
+    target: { direction: 'column', justify: 'space-around', align: 'flex-end', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'יש כאן יותר מדי כוכבי לכת לשורה אחת! גרמו לעודפים לעטוף לשורה נוספת, וסדרו את כולם צמודים לפינה השמאלית העליונה של הלוח.',
     itemCount: 8,
     itemSize: 55,
-    target: { direction: 'row', justify: 'flex-start', align: 'flex-start', wrap: 'wrap' }
+    target: { direction: 'row', justify: 'flex-start', align: 'flex-start', alignContent: 'flex-start', wrap: 'wrap' }
   },
   {
     instruction: 'סדרו את כוכבי הלכת בשורה אחת עם מרווח שווה לגמרי בין כולם וגם בין הקצוות ללוח. מקמו אותם בחלק העליון של הלוח.',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'row', justify: 'space-evenly', align: 'flex-start', wrap: 'nowrap' }
+    target: { direction: 'row', justify: 'space-evenly', align: 'flex-start', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'סדרו את כוכבי הלכת בעמודה אחת, ומרכזו את כל הקבוצה גם לגובה וגם לרוחב הלוח.',
     itemCount: 4,
     itemSize: 55,
-    target: { direction: 'column', justify: 'center', align: 'center', wrap: 'nowrap' }
+    target: { direction: 'column', justify: 'center', align: 'center', alignContent: 'stretch', wrap: 'nowrap' }
   },
   {
     instruction: 'יש כאן יותר מדי כוכבי לכת לעמודה אחת! אפשרו להם לעטוף לעמודה נוספת, ומרכזו את כל הקבוצה בלוח.',
     itemCount: 7,
     itemSize: 55,
-    target: { direction: 'column', justify: 'center', align: 'center', wrap: 'wrap' }
+    target: { direction: 'column', justify: 'center', align: 'center',  alignContent: 'center', wrap: 'wrap' }
   }
 ];
 
@@ -79,6 +80,7 @@ const feedbackEl = document.getElementById('feedback');
 const ctrlDirection = document.getElementById('ctrl-direction');
 const ctrlJustify = document.getElementById('ctrl-justify');
 const ctrlAlign = document.getElementById('ctrl-align');
+const ctrlAlignContent = document.getElementById('ctrl-align-content');
 const ctrlWrap = document.getElementById('ctrl-wrap');
 
 const btnCheck = document.getElementById('btn-check');
@@ -132,6 +134,7 @@ function applyControlsToBoard() {
   boardEl.style.flexDirection = ctrlDirection.value;
   boardEl.style.justifyContent = ctrlJustify.value;
   boardEl.style.alignItems = ctrlAlign.value;
+  boardEl.style.alignContent = ctrlAlignContent.value;  
   boardEl.style.flexWrap = ctrlWrap.value;
 }
 
@@ -139,6 +142,7 @@ function setControlsToDefault() {
   ctrlDirection.value = DEFAULT_CONTROLS.direction;
   ctrlJustify.value = DEFAULT_CONTROLS.justify;
   ctrlAlign.value = DEFAULT_CONTROLS.align;
+  ctrlAlignContent.value = DEFAULT_CONTROLS.alignContent;  
   ctrlWrap.value = DEFAULT_CONTROLS.wrap;
   applyControlsToBoard();
 }
@@ -238,6 +242,7 @@ function checkSolution() {
     ctrlDirection.value === target.direction &&
     ctrlJustify.value === target.justify &&
     ctrlAlign.value === target.align &&
+    ctrlAlignContent.value === target.alignContent &&  
     ctrlWrap.value === target.wrap;
 
   if (isCorrect) {
@@ -284,6 +289,7 @@ function resetLevel() {
 ctrlDirection.addEventListener('change', applyControlsToBoard);
 ctrlJustify.addEventListener('change', applyControlsToBoard);
 ctrlAlign.addEventListener('change', applyControlsToBoard);
+ctrlAlignContent.addEventListener('change', applyControlsToBoard);
 ctrlWrap.addEventListener('change', applyControlsToBoard);
 
 btnCheck.addEventListener('click', checkSolution);

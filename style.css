@@ -193,6 +193,7 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  align-content: stretch;
   flex-wrap: nowrap;
 }
 
@@ -251,8 +252,9 @@ body {
 .controls-panel {
   width: 100%;
   max-width: 480px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
   justify-content: center;
   background: var(--surface);
@@ -379,8 +381,5 @@ body {
   }
 }
 
-@media (max-width: 380px) {
-  .board {
-    width: 280px;
-  }
-}
+
+
